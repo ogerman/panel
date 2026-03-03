@@ -486,6 +486,8 @@ class ProxyHost(Base):
     verify_peer_cert_by_name: Mapped[Optional[set[str]]] = mapped_column(
         StringArray(1000), default_factory=set, unique=False, nullable=True
     )
+    tls_min_version: Mapped[Optional[str]] = mapped_column(String(8), default=None)
+    tls_max_version: Mapped[Optional[str]] = mapped_column(String(8), default=None)
 
 
 class System(Base):

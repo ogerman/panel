@@ -65,6 +65,8 @@ export interface HostFormValues {
   ech_query_strategy?: 'none' | 'half' | 'full'
   pinned_peer_cert_sha256?: string
   verify_peer_cert_by_name?: string[]
+  tls_min_version?: string
+  tls_max_version?: string
   fragment_settings?: {
     xray?: {
       packets?: string
@@ -327,6 +329,8 @@ export const HostFormSchema = z.object({
   ech_query_strategy: z.enum(['none', 'half', 'full']).optional(),
   pinned_peer_cert_sha256: z.string().max(128, 'Pinned peer cert SHA256 must be at most 128 characters').optional(),
   verify_peer_cert_by_name: z.array(z.string()).default([]),
+  tls_min_version: z.string().optional(),
+  tls_max_version: z.string().optional(),
   fragment_settings: z
     .object({
       xray: z
@@ -443,5 +447,7 @@ export const hostFormDefaultValues: HostFormValues = {
   ech_query_strategy: undefined,
   pinned_peer_cert_sha256: undefined,
   verify_peer_cert_by_name: [],
+  tls_min_version: undefined,
+  tls_max_version: undefined,
   fragment_settings: undefined,
 }

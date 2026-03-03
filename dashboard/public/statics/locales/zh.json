@@ -1077,7 +1077,9 @@
     "routingSettings": "Routing",
     "vlessRoute": "VLESS Route",
     "vlessRoutePlaceholder": "e.g. abcd",
-    "vlessRoute.info": "Optional route value for VLESS hosts. Must be exactly 4 hexadecimal characters (0-9, a-f, A-F). Leave empty to use default routing."
+    "vlessRoute.info": "Optional route value for VLESS hosts. Must be exactly 4 hexadecimal characters (0-9, a-f, A-F). Leave empty to use default routing.",
+    "tlsMinVersion": "最小 TLS 版本",
+    "tlsMaxVersion": "最大 TLS 版本"
   },
   "inbound": "入站",
   "inbounds": "入站",

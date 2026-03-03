@@ -1944,6 +1944,10 @@ export type CreateHostEchQueryStrategy = ECHQueryStrategy | null
 
 export type CreateHostEchConfigList = string | null
 
+export type CreateHostTlsMinVersion = string | null
+
+export type CreateHostTlsMaxVersion = string | null
+
 export type CreateHostStatus = UserStatus[] | null
 
 export type CreateHostVlessRoute = string | null
@@ -2004,6 +2008,8 @@ export interface CreateHost {
   ech_query_strategy?: CreateHostEchQueryStrategy
   pinned_peer_cert_sha256?: CreateHostPinnedPeerCertSha256
   verify_peer_cert_by_name?: CreateHostVerifyPeerCertByName
+  tls_min_version?: CreateHostTlsMinVersion
+  tls_max_version?: CreateHostTlsMaxVersion
 }
 
 /**
@@ -2180,6 +2186,10 @@ export type BaseHostEchQueryStrategy = ECHQueryStrategy | null
 
 export type BaseHostEchConfigList = string | null
 
+export type BaseHostTlsMinVersion = string | null
+
+export type BaseHostTlsMaxVersion = string | null
+
 export type BaseHostStatus = UserStatus[] | null
 
 export type BaseHostVlessRoute = string | null
@@ -2240,6 +2250,8 @@ export interface BaseHost {
   ech_query_strategy?: BaseHostEchQueryStrategy
   pinned_peer_cert_sha256?: BaseHostPinnedPeerCertSha256
   verify_peer_cert_by_name?: BaseHostVerifyPeerCertByName
+  tls_min_version?: BaseHostTlsMinVersion
+  tls_max_version?: BaseHostTlsMaxVersion
 }
 
 export type ApplicationOutputDescription = { [key: string]: string }

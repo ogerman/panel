@@ -247,6 +247,8 @@ class BaseHost(BaseModel):
     ech_query_strategy: ECHQueryStrategy | None = Field(default=None)
     pinned_peer_cert_sha256: str | None = Field(default=None)
     verify_peer_cert_by_name: set[str] | None = Field(default_factory=set)
+    tls_min_version: str | None = Field(default=None)
+    tls_max_version: str | None = Field(default=None)
 
     model_config = ConfigDict(from_attributes=True)
 

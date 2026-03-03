@@ -89,6 +89,8 @@ async def _prepare_subscription_inbound_data(
         alpn_list=alpn_list,
         ech_config_list=host.ech_config_list,
         ech_query_strategy=ech_query_strategy,
+        min_version=host.tls_min_version,
+        max_version=host.tls_max_version,
         reality_public_key=reality_pbk,
         reality_short_id=reality_sid,
         reality_short_ids=reality_sids,

@@ -64,6 +64,8 @@ export default function HostsPage() {
         verify_peer_cert_by_name:
           formData.verify_peer_cert_by_name && formData.verify_peer_cert_by_name.length > 0 ? formData.verify_peer_cert_by_name : undefined,
         vless_route: formData.vless_route || undefined,
+        tls_min_version: formData.tls_min_version || undefined,
+        tls_max_version: formData.tls_max_version || undefined,
         transport_settings: formData.transport_settings
           ? {
               ...formData.transport_settings,
