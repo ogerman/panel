@@ -192,6 +192,12 @@ class StandardLinks(BaseSubscription):
         if tls_config.ech_query_strategy:
             payload["echForceQuery"] = tls_config.ech_query_strategy
 
+        if tls_config.tls == "tls":
+            if tls_config.min_version:
+                payload["minVersion"] = tls_config.min_version
+            if tls_config.max_version:
+                payload["maxVersion"] = tls_config.max_version
+
         if tls_config.tls == "reality":
             payload["pbk"] = tls_config.reality_public_key
             payload["sid"] = tls_config.reality_short_id

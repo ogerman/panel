@@ -22,6 +22,8 @@ class TLSConfig(BaseModel):
     ech_query_strategy: str | None = Field(None)
     pinned_peer_cert_sha256: str | None = Field(default=None)
     verify_peer_cert_by_name: list[str] | None = Field(default_factory=list)
+    min_version: str | None = None
+    max_version: str | None = None
 
     # Reality specific
     reality_public_key: str = Field("")

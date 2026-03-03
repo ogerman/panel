@@ -1023,6 +1023,8 @@
     "verifyPeerCertByNamePlaceholder": "example.com",
     "echConfigList.info": "Encrypted Client Hello (ECH) configuration list. This is a base64 encoded string.",
     "echConfigListPlaceholder": "Enter ECH Config List",
+    "tlsMinVersion": "Min TLS version",
+    "tlsMaxVersion": "Max TLS version",
     "httpVersions": {
       "1.0": "HTTP/1.0",
       "1.1": "HTTP/1.1",

@@ -1299,6 +1299,65 @@ const HostModal: React.FC<HostModalProps> = ({ isDialogOpen, onOpenChange, onSub
                           )
                         }}
                       />
+
+                      {form.watch('security') === 'tls' && (
+                        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                          <FormField
+                            control={form.control}
+                            name="tls_min_version"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>{t('hostsDialog.tlsMinVersion', { defaultValue: 'Min TLS version' })}</FormLabel>
+                                <Select
+                                  onValueChange={value => field.onChange(value === '__default' ? '' : value)}
+                                  value={field.value || '__default'}
+                                >
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder={t('hostsDialog.tlsMinVersion', { defaultValue: 'Min TLS version' })} />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="__default">{t('default')}</SelectItem>
+                                    <SelectItem value="1.0">1.0</SelectItem>
+                                    <SelectItem value="1.1">1.1</SelectItem>
+                                    <SelectItem value="1.2">1.2</SelectItem>
+                                    <SelectItem value="1.3">1.3</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="tls_max_version"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>{t('hostsDialog.tlsMaxVersion', { defaultValue: 'Max TLS version' })}</FormLabel>
+                                <Select
+                                  onValueChange={value => field.onChange(value === '__default' ? '' : value)}
+                                  value={field.value || '__default'}
+                                >
+                                  <FormControl>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder={t('hostsDialog.tlsMaxVersion', { defaultValue: 'Max TLS version' })} />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="__default">{t('default')}</SelectItem>
+                                    <SelectItem value="1.0">1.0</SelectItem>
+                                    <SelectItem value="1.1">1.1</SelectItem>
+                                    <SelectItem value="1.2">1.2</SelectItem>
+                                    <SelectItem value="1.3">1.3</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                      )}
                     </div>
                   </AccordionContent>
                 </AccordionItem>

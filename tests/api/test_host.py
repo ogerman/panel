@@ -111,6 +111,82 @@ def test_host_update(access_token):
     delete_core(access_token, core["id"])
 
 
+def test_host_tls_min_max_version_create_and_update(access_token):
+    """Test that tls_min_version and tls_max_version are accepted and returned."""
+    core = create_core(access_token)
+    inbounds = get_inbounds(access_token)
+    assert inbounds, "No inbounds available for host creation"
+    inbound = inbounds[0]
+    remark = unique_name("test_host_tls_versions")
+    try:
+        create_payload = {
+            "remark": remark,
+            "address": ["127.0.0.1"],
+            "port": 443,
+            "sni": ["tlsversions.example.com"],
+            "inbound_tag": inbound,
+            "priority": 9998,
+            "security": "tls",
+            "tls_min_version": "1.2",
+            "tls_max_version": "1.3",
+        }
+        create_resp = client.post(
+            "/api/host",
+            headers={"Authorization": f"Bearer {access_token}"},
+            json=create_payload,
+        )
+        assert create_resp.status_code == status.HTTP_201_CREATED
+        data = create_resp.json()
+        assert data.get("tls_min_version") == "1.2"
+        assert data.get("tls_max_version") == "1.3"
+
+        host_id = data["id"]
+        update_payload = {
+            "remark": data["remark"],
+            "priority": data["priority"],
+            "address": data["address"],
+            "sni": data["sni"],
+            "inbound_tag": data["inbound_tag"],
+            "security": "tls",
+            "tls_min_version": "1.1",
+            "tls_max_version": "1.2",
+        }
+        update_resp = client.put(
+            f"/api/host/{host_id}",
+            headers={"Authorization": f"Bearer {access_token}"},
+            json=update_payload,
+        )
+        assert update_resp.status_code == status.HTTP_200_OK
+        updated = update_resp.json()
+        assert updated.get("tls_min_version") == "1.1"
+        assert updated.get("tls_max_version") == "1.2"
+
+        clear_payload = {
+            "remark": updated["remark"],
+            "priority": updated["priority"],
+            "address": updated["address"],
+            "sni": updated["sni"],
+            "inbound_tag": updated["inbound_tag"],
+            "security": "tls",
+        }
+        clear_resp = client.put(
+            f"/api/host/{host_id}",
+            headers={"Authorization": f"Bearer {access_token}"},
+            json=clear_payload,
+        )
+        assert clear_resp.status_code == status.HTTP_200_OK
+        cleared = clear_resp.json()
+        assert cleared.get("tls_min_version") is None
+        assert cleared.get("tls_max_version") is None
+    finally:
+        hosts = client.get("/api/hosts", headers={"Authorization": f"Bearer {access_token}"}).json()
+        for h in hosts:
+            if h.get("remark") == remark:
+                client.delete(f"/api/host/{h['id']}", headers={"Authorization": f"Bearer {access_token}"})
+                break
+        delete_core(access_token, core["id"])
+
+
 def test_host_delete(access_token):
     """Test that the host delete route is accessible."""
 

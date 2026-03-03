@@ -156,6 +156,8 @@ export default function HostsList({ data, onAddHost, isDialogOpen, onSubmit, edi
       ech_query_strategy: host.ech_query_strategy || undefined,
       pinned_peer_cert_sha256: host.pinned_peer_cert_sha256 || undefined,
       verify_peer_cert_by_name: host.verify_peer_cert_by_name || [],
+      tls_min_version: host.tls_min_version || undefined,
+      tls_max_version: host.tls_max_version || undefined,
       fragment_settings: host.fragment_settings
         ? {
             xray: host.fragment_settings.xray ?? undefined,
@@ -440,6 +442,8 @@ export default function HostsList({ data, onAddHost, isDialogOpen, onSubmit, edi
         ech_query_strategy: host.ech_query_strategy || undefined,
         pinned_peer_cert_sha256: host.pinned_peer_cert_sha256 || undefined,
         verify_peer_cert_by_name: host.verify_peer_cert_by_name || undefined,
+        tls_min_version: host.tls_min_version || undefined,
+        tls_max_version: host.tls_max_version || undefined,
         fragment_settings: host.fragment_settings,
         noise_settings: host.noise_settings,
         mux_settings: host.mux_settings

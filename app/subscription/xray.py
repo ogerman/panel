@@ -326,6 +326,10 @@ class XrayConfiguration(BaseSubscription):
             }
             if tls_config.alpn_list:
                 config["alpn"] = tls_config.alpn_list  # Use list for xray
+            if tls_config.min_version:
+                config["minVersion"] = tls_config.min_version
+            if tls_config.max_version:
+                config["maxVersion"] = tls_config.max_version
 
             return self._normalize_and_remove_none_values(config)
 

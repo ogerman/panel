@@ -217,6 +217,12 @@ class SingBoxConfiguration(BaseSubscription):
             if tls_config.tls == "reality"
             else None,
         }
+        # TLS version constraints (sing-box outbound TLS; not used for Reality)
+        if tls_config.tls == "tls":
+            if tls_config.min_version:
+                config["min_version"] = tls_config.min_version
+            if tls_config.max_version:
+                config["max_version"] = tls_config.max_version
 
         # Fragment settings (from inbound, not TLS) - sing-box embeds in TLS config
         if fragment_settings and (singbox_fragment := fragment_settings.get("sing_box")):

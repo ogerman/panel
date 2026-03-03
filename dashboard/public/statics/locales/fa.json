@@ -894,6 +894,8 @@
     "verifyPeerCertByNamePlaceholder": "example.com",
     "echConfigList.info": "لیست پیکربندی Encrypted Client Hello (ECH). این یک رشته کدگذاری شده با base64 است.",
     "echConfigListPlaceholder": "لیست پیکربندی ECH را وارد کنید",
+    "tlsMinVersion": "حداقل نسخه TLS",
+    "tlsMaxVersion": "حداکثر نسخه TLS",
     "httpVersions": {
       "1.0": "HTTP/1.0",
       "1.1": "HTTP/1.1",

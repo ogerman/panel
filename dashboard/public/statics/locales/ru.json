@@ -1006,6 +1006,8 @@
     "verifyPeerCertByNamePlaceholder": "example.com",
     "echConfigList.info": "Список конфигураций Encrypted Client Hello (ECH). Это строка, закодированная в base64.",
     "echConfigListPlaceholder": "Введите список конфигураций ECH",
+    "tlsMinVersion": "Мин. версия TLS",
+    "tlsMaxVersion": "Макс. версия TLS",
     "inboundDefault": "По умолчанию",
     "earlyData": "Ранние данные",
     "httpHeaders": "HTTP заголовки",
